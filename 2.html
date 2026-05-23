@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-primary-fixed": "#321300",
+                "surface-variant": "#353534",
+                "on-primary-fixed-variant": "#6f3810",
+                "outline": "#a08d83",
+                "on-primary": "#522300",
+                "inverse-primary": "#8c4f25",
+                "on-error-container": "#ffdad6",
+                "on-primary-container": "#5b2801",
+                "primary-fixed": "#ffdbc8",
+                "primary": "#ffb68b",
+                "secondary-fixed-dim": "#dec1ac",
+                "on-tertiary-fixed": "#1c1b1b",
+                "primary-container": "#d98e5f",
+                "on-background": "#e5e2e1",
+                "surface-bright": "#393939",
+                "surface-container-low": "#1c1b1b",
+                "on-tertiary-fixed-variant": "#474746",
+                "surface-container": "#201f1f",
+                "surface-tint": "#ffb68b",
+                "tertiary": "#c8c6c5",
+                "surface-container-high": "#2a2a2a",
+                "surface-dim": "#131313",
+                "on-error": "#690005",
+                "surface-container-lowest": "#0e0e0e",
+                "on-tertiary": "#313030",
+                "secondary-container": "#574333",
+                "error-container": "#93000a",
+                "on-secondary-container": "#ccb09c",
+                "surface-container-highest": "#353534",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "tertiary-container": "#a19f9f",
+                "secondary": "#dec1ac",
+                "on-surface-variant": "#d8c2b7",
+                "primary-fixed-dim": "#ffb68b",
+                "inverse-on-surface": "#313030",
+                "on-secondary": "#3f2d1e",
+                "on-secondary-fixed": "#28180b",
+                "on-tertiary-container": "#373636",
+                "secondary-fixed": "#fbddc7",
+                "on-surface": "#e5e2e1",
+                "background": "#131313",
+                "outline-variant": "#53443b",
+                "error": "#ffb4ab",
+                "tertiary-fixed": "#e5e2e1",
+                "inverse-surface": "#e5e2e1",
+                "surface": "#131313",
+                "on-secondary-fixed-variant": "#574333"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "margin-mobile": "16px",
+                "margin-desktop": "48px",
+                "stack-lg": "48px",
+                "stack-sm": "12px",
+                "unit": "8px",
+                "stack-md": "24px",
+                "container-max": "1280px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "headline-md": ["Playfair Display"],
+                "display-lg": ["Playfair Display"],
+                "label-md": ["Manrope"],
+                "headline-lg-mobile": ["Playfair Display"],
+                "body-lg": ["Manrope"],
+                "label-sm": ["Manrope"],
+                "headline-lg": ["Playfair Display"],
+                "body-md": ["Manrope"]
+        },
+        "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+    body {
+      background-color: #131313;
+      color: #e5e2e1;
+    }
+    .glass-card {
+      background: rgba(32, 31, 31, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(160, 141, 131, 0.2);
+    }
+    .gradient-wash {
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    }
+    .shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,182,139,0.1), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite linear;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+  </style>
+</head>
+<body class="font-body-md overflow-x-hidden dark:bg-background">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 bg-surface-container/60 backdrop-blur-2xl border-r border-outline-variant/20 shadow-xl hidden lg:flex flex-col p-6 gap-stack-lg">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">checkroom</span>
+</div>
+<div>
+<h1 class="font-headline-md text-primary leading-tight">ClosetIQ</h1>
+<p class="font-label-sm text-on-surface-variant/70">AI Stylist</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 transition-all duration-300 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">checkroom</span>
+<span class="font-label-md">Wardrobe</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-xl px-4 py-3 transition-all duration-300 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-md">Generator</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 transition-all duration-300 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md">Explore</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-6">
+<div class="p-4 rounded-xl bg-secondary-container text-on-secondary-container flex flex-col gap-3">
+<p class="font-label-sm">Get personalized AI trend analysis</p>
+<button class="bg-primary text-on-primary font-label-md py-2 rounded-xl hover:opacity-90 transition-opacity">Premium Upgrade</button>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 min-h-screen px-margin-mobile md:px-margin-desktop py-8 pb-32 lg:pb-8 bg-background">
+<!-- Top Bar / Header -->
+<header class="flex justify-between items-end mb-stack-lg">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-primary/70 tracking-widest uppercase">Personal Styling</span>
+<h2 class="font-headline-lg text-primary">AI Stylist</h2>
+</div>
+<!-- Weather Widget -->
+<div class="glass-card rounded-2xl px-5 py-3 flex items-center gap-4 animate-in fade-in slide-in-from-top-4 duration-700">
+<div class="text-right">
+<p class="font-label-md text-primary leading-none">New York, NY</p>
+<p class="font-label-sm text-on-surface-variant/70 mt-1">Cloudy, 64°F</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">cloud_queue</span>
+</div>
+</div>
+</header>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left: Occasion Selector & Controls -->
+<div class="lg:col-span-4 flex flex-col gap-stack-lg">
+<!-- Occasion Card -->
+<section class="glass-card p-6 rounded-xl">
+<h3 class="font-label-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">event_note</span>
+            OCCASION
+          </h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full font-label-sm bg-primary text-on-primary">Date Night</button>
+<button class="px-4 py-2 rounded-full font-label-sm border border-outline text-on-surface-variant hover:bg-surface-container transition-colors">Streetwear</button>
+<button class="px-4 py-2 rounded-full font-label-sm border border-outline text-on-surface-variant hover:bg-surface-container transition-colors">Gym</button>
+<button class="px-4 py-2 rounded-full font-label-sm border border-outline text-on-surface-variant hover:bg-surface-container transition-colors">Business Casual</button>
+<button class="px-4 py-2 rounded-full font-label-sm border border-outline text-on-surface-variant hover:bg-surface-container transition-colors">Minimalist</button>
+<button class="px-4 py-2 rounded-full font-label-sm border border-outline text-on-surface-variant hover:bg-surface-container transition-colors">Wedding Guest</button>
+</div>
+</section>
+<!-- Generation Controls -->
+<div class="flex flex-col gap-4">
+<button class="group relative w-full bg-primary text-on-primary py-5 rounded-2xl font-headline-md flex items-center justify-center gap-3 overflow-hidden transition-all active:scale-[0.98] shadow-lg shadow-primary/20" id="shuffleBtn">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>SHUFFLE LOOK</span>
+<div class="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+</button>
+<div class="grid grid-cols-2 gap-4">
+<button class="glass-card py-4 rounded-2xl flex items-center justify-center gap-2 text-primary font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+              SAVE OUTFIT
+            </button>
+<button class="glass-card py-4 rounded-2xl flex items-center justify-center gap-2 text-primary font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">share</span>
+              SHARE
+            </button>
+</div>
+</div>
+<!-- Details Card -->
+<section class="glass-card p-6 rounded-xl">
+<h3 class="font-label-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">info</span>
+            STYLIST NOTES
+          </h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+            "A balanced evening look featuring earthy tones and textural contrast. The suede jacket adds sophistication for <span class="text-primary font-bold">Date Night</span>, while the cream knit keeps it relaxed and approachable."
+          </p>
+</section>
+</div>
+<!-- Right: Main Showcase (Bento Style) -->
+<div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[160px]">
+<!-- Large Feature: Hero Image -->
+<div class="col-span-2 row-span-4 relative rounded-[32px] overflow-hidden group shadow-2xl border border-outline-variant/30">
+<img alt="Main Look" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]" data-alt="A professional high-fashion portrait of a stylish individual wearing a complete cohesive outfit in a minimalist urban setting. The person is wearing a dark brown suede jacket over a cream-colored textured wool sweater, perfectly capturing a sophisticated and cinematic light-mode aesthetic. Soft daylight illuminates the scene, emphasizing the rich textures and premium fabrics with a luxury editorial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjc9MA9QUsAbMx62kSQYCDVH8sQiX_Gbc5PSro01rMPXg2Ag3cKUMZitNvxhHnihChD2eSm4PJisJE8Arsn2xZZJ0lTfDbC-ZQ0suXBHk9QvmTgtSU27aBnlVpLZzGUjtmLVmSX4cC4_Dkeqg0FWSivBXYSwI6Hn9LT3VCzXtzR_EJiMyAPylNyg5RXz1KgQCJqy0KBrwfYnPbdosNp4au1Zazte4XqtaI9IbZTk5RJXg9leQmFcGousgt6fYoUF5OijYvO68xiLx7"/>
+<div class="absolute inset-0 gradient-wash flex flex-col justify-end p-8">
+<span class="bg-primary/90 text-on-primary w-fit px-4 py-1 rounded-full font-label-sm mb-2 backdrop-blur-md">Full Concept</span>
+<h3 class="text-white font-headline-lg-mobile md:font-headline-lg leading-tight">Fit of the Day</h3>
+</div>
+</div>
+<!-- Top Item -->
+<div class="col-span-1 row-span-2 glass-card rounded-3xl overflow-hidden group relative border border-outline-variant/30">
+<img alt="Top Item" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="Close up product photography of a premium cream-colored textured knit sweater laying on a clean white surface. The lighting is bright and high-key, highlighting the intricate stitch patterns and soft wool texture. The overall mood is luxurious, minimalist, and serene, fitting a light-mode fashion app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUwNFlAklUlTXVbEL0lFbqNrI9H0s64Ll_zjL-gcvZicljg79yIKkixBPYoeY5uEsIlvkXhhWEiePL-stNhxwOL5rnocKgOgwZUR67dm-UdTjWUT9fdOWr8UT_ypLgc4Z95rEhVToSQxGbOXJ7G9ASzAOwYy2ngBbxv7j_pgS-RwUxojFQYseySPR0TyaChgwRfs_K21ZEkuTwsCdoEJfoWV6VmLQJlHUFc3yHUu98ETfT3QpebnfbhaLSYpGfZ7ErKujAaJTdAqBH"/>
+<div class="absolute bottom-4 left-4 right-4 flex flex-col z-10">
+<span class="font-label-sm text-white/80 uppercase tracking-tighter">Layer 1</span>
+<span class="font-label-md text-white">Merino Knit</span>
+</div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<!-- Outerwear Item -->
+<div class="col-span-1 row-span-2 glass-card rounded-3xl overflow-hidden group relative border border-outline-variant/30">
+<img alt="Outerwear Item" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="Elegant product shot of a dark brown suede biker jacket with silver hardware, photographed against a soft beige studio background. The lighting is diffused and professional, showcasing the rich texture of the suede and the sharp tailoring of the garment. Clean lines and high contrast create a sophisticated fashion-forward vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF1tkySo_AIRIa7aiqK11_7oR4q84od3yVzhb7MyknRtFS38KEYs0U8OI_Q7gfsNNktEZxHak6u17_83AWq_o8MKJvPsqAVpUkWD-_eiXcM13TFHDKctYk5TOR8HoKfeq3GHDhUYDQIOBpHHMrQmxTPNZNKeJYTN-yNClp4n4YQX-Y5ZFPMU0NEZF2-Pywsflz9n2pj5Ds5Ckn5SoAYqdqaoR35cnqyde_G_EscDBP4riifgWR53RFmGFV1KuTFwk5UTJ6wL7mkZgL"/>
+<div class="absolute bottom-4 left-4 right-4 flex flex-col z-10">
+<span class="font-label-sm text-white/80 uppercase tracking-tighter">Layer 2</span>
+<span class="font-label-md text-white">Suede Jacket</span>
+</div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<!-- Bottom Item -->
+<div class="col-span-1 row-span-2 glass-card rounded-3xl overflow-hidden group relative border border-outline-variant/30">
+<img alt="Bottom Item" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="Crisp studio photography of high-quality dark indigo raw denim jeans folded neatly on a light wood surface. The focus is on the grain of the denim and the precise stitching. The atmosphere is clean and high-end, utilizing soft natural light to create a minimalist and aspirational aesthetic for a fashion closet app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6VCK_7Vu_k6Ap34GzSmNzwjJl62pChtX1bD3P5Y4w75BS8MGzAWY4UB2icpD5MpMjQ2LlbC1rh00HOEND82nq9zFiMlo-CH2WDag_Uo_3e464SmIs1MAY8lvQhddX9QbDt760RUc392ENRlHt9MZd_QMpQs8IE7Vg6brkx-XknMpS1LaYcJqcdaK_QU8k2scijJ2djHO8yfhxQPoirh2TE91nB-jnmImEEc6hi1I6gD-mvTlSohyIJhV8ut_Do0dxz05b4uxUpaff"/>
+<div class="absolute bottom-4 left-4 right-4 flex flex-col z-10">
+<span class="font-label-sm text-white/80 uppercase tracking-tighter">Legwear</span>
+<span class="font-label-md text-white">Selvedge Denim</span>
+</div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<!-- Shoes/Accessory -->
+<div class="col-span-1 row-span-2 glass-card rounded-3xl overflow-hidden group relative border border-outline-variant/30">
+<img alt="Shoes Item" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="A pair of luxury tan leather Chelsea boots standing on a polished concrete floor in a bright gallery-like setting. The lighting is sophisticated, creating soft shadows and highlighting the premium sheen of the leather. The composition is clean and minimalist, evoking a sense of high-end style and craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6uLSxd9dOCkcZaQrg68ftI0c76zQrpwmmsAEVbeAj5JkC5LulZE64VGbYw0YBTh6zt1JVoEdV-UiaeX-FbQGpQQ8rwOyQtbokEZ75DCOzeVmGygro51m0u6oPMDNA6GrBepgOkyMtMJLuZF4RYcehqaFMHQCJYwCxPgi_3oKlb9RTcNimKX5TNpmksc3bboGTs8BjU5INUJgmFK1Gc-hJp7GRkqcw4BlibdPcc4enrq65V1eiPqIqd1D1jJiL8eesbEjc9SbYVGAk"/>
+<div class="absolute bottom-4 left-4 right-4 flex flex-col z-10">
+<span class="font-label-sm text-white/80 uppercase tracking-tighter">Footwear</span>
+<span class="font-label-md text-white">Chelsea Boots</span>
+</div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] bg-surface-container/70 backdrop-blur-2xl border border-outline-variant/20 shadow-2xl shadow-primary/5 rounded-full z-50 flex justify-around items-center px-6 py-3">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">checkroom</span>
+<span class="font-label-sm text-[10px] mt-1">Wardrobe</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full w-12 h-12 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-[10px] mt-1">Explore</span>
+</a>
+</nav>
+<script>
+    // Micro-interactions
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    shuffleBtn.addEventListener('click', () => {
+      // Simulate loading state
+      const text = shuffleBtn.querySelector('span:not(.material-symbols-outlined)');
+      const originalText = text.innerText;
+      text.innerText = 'STYLING...';
+      
+      // Animate images
+      document.querySelectorAll('img').forEach((img, index) => {
+        img.style.opacity = '0.3';
+        img.style.filter = 'blur(10px) grayscale(50%)';
+        setTimeout(() => {
+          img.style.opacity = '1';
+          img.style.filter = 'blur(0px) grayscale(0%)';
+        }, 300 + (index * 100));
+      });
+
+      setTimeout(() => {
+        text.innerText = originalText;
+      }, 1500);
+    });
+
+    // Occasion selector toggle
+    const occasionButtons = document.querySelectorAll('button.font-label-sm');
+    occasionButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        occasionButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary');
+          b.classList.add('border', 'border-outline', 'text-on-surface-variant');
+        });
+        btn.classList.add('bg-primary', 'text-on-primary');
+        btn.classList.remove('border', 'border-outline', 'text-on-surface-variant');
+      });
+    });
+  </script>
+</body></html>

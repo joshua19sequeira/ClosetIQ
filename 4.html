@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClosetIQ | The Future of Fashion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(32, 31, 31, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(160, 141, 131, 0.2);
+        }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 20px;
+        }
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#321300",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed-variant": "#6f3810",
+                        "outline": "#a08d83",
+                        "on-primary": "#522300",
+                        "inverse-primary": "#8c4f25",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#5b2801",
+                        "primary-fixed": "#ffdbc8",
+                        "primary": "#ffb68b",
+                        "secondary-fixed-dim": "#dec1ac",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "primary-container": "#d98e5f",
+                        "on-background": "#e5e2e1",
+                        "surface-bright": "#393939",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "surface-container": "#201f1f",
+                        "surface-tint": "#ffb68b",
+                        "tertiary": "#c8c6c5",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-dim": "#131313",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary": "#313030",
+                        "secondary-container": "#574333",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#ccb09c",
+                        "surface-container-highest": "#353534",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "tertiary-container": "#a19f9f",
+                        "secondary": "#dec1ac",
+                        "on-surface-variant": "#d8c2b7",
+                        "primary-fixed-dim": "#ffb68b",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary": "#3f2d1e",
+                        "on-secondary-fixed": "#28180b",
+                        "on-tertiary-container": "#373636",
+                        "secondary-fixed": "#fbddc7",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "outline-variant": "#53443b",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "on-secondary-fixed-variant": "#574333"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "stack-lg": "48px",
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "stack-md": "24px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden font-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex justify-between items-center px-margin-desktop py-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-lg text-headline-md tracking-tighter text-primary">ClosetIQ</span>
+</div>
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#how-it-works">How it Works</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#pricing">Pricing</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Wardrobe</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="favorite">favorite</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="notifications">notifications</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md active:scale-95 transition-transform">
+            Sign In
+        </button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden px-margin-mobile lg:px-margin-desktop">
+<div class="absolute inset-0 z-0 opacity-20">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container rounded-full mix-blend-screen filter blur-3xl animate-pulse"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container rounded-full mix-blend-screen filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+</div>
+<!-- Floating Fashion Cards -->
+<div class="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+<div class="absolute top-20 right-10 md:right-40 floating-card" style="animation-duration: 7s">
+<div class="w-48 h-72 rounded-xl overflow-hidden shadow-2xl border border-outline/20 rotate-12 bg-surface-container">
+<img class="w-full h-full object-cover opacity-80" data-alt="Model in yellow dress" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0HkpJR8v5VScfi0m91xbAkyBSG0_by20iSjmOTJnqVYO7j8fiC2jghdnTaHFv_5DL1RO7K6fwbLsjsGNcfTElwFDeQE7YDQbTsE_maCtbj1PBfc-bWqKQ6RLhTkdqKkoEAyLg3qq4zMCq2vqkzJnEJjoSVZmM8LkR8BhErXbkarp1amVbYcur_-hBRFfZqqugJLQRlip8MZWLEXng4gRtsHJrsIgZT-LVeqtgiA2jZs2q8DRLHBGdNL0mESaEi4cZmxym9ABPgh0N"/>
+</div>
+</div>
+<div class="absolute bottom-40 left-10 md:left-20 floating-card" style="animation-duration: 9s; animation-delay: 1s">
+<div class="w-40 h-60 rounded-xl overflow-hidden shadow-2xl border border-outline/20 -rotate-6 bg-surface-container">
+<img class="w-full h-full object-cover opacity-80" data-alt="Luxury accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ1Osl4mchJ4Hf0Hcs4CwlG25phmHzM6I19AGOzEDHYZ69Aosn0-HgMYhmr1XqsqPDmWkn0GmTBEoPS-eAHe67fGrAtBWdUUbf9Wi5MGSapDefcePB4HGnPN6CTaRynYCL3-qPEX2mKt9LF9LX8LuL_ZaCrah195nvRlJVRueXs2467P3JCUIrv9hcqkj8JXi2dZC5kWNyT_OU9x7Vjy2sAOMrU6sfhlvhJtIAQhA2KN7bAES2gT7qNy95idLjbfxBixb76-rM8BHJ"/>
+</div>
+</div>
+<div class="absolute top-1/3 left-1/4 hidden lg:block floating-card" style="animation-duration: 8s; animation-delay: 0.5s">
+<div class="w-56 h-80 rounded-xl overflow-hidden shadow-2xl border border-outline/20 -rotate-12 bg-surface-container">
+<img class="w-full h-full object-cover opacity-80" data-alt="Urban fashion" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB383KW-YgIQFSVse34jpPf_JUIXxxzDMmPb8y1MlSAlY1h25-cUfTJRst5gIVtmHf6I2fCXJJlyR9dZ1Tc51aSaSwIMVuSergWXizwuaN7DvAkd9gem56Os43TlBZrJ6nq6fuxo_HWaTnODF-1riXOC8MM1wpN8gLj2uzpsm-zcgRNBLdX4TIcarDkD0eiT91xUvdqY_a727sQQukNoRL-Ca1Kpw7AEsNk4XERbz45KFOsJZcUWHoQ-TYjcT6oWrenMu21vSV5xrsh"/>
+</div>
+</div>
+</div>
+<div class="relative z-20 text-center max-w-5xl mx-auto space-y-stack-lg">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/20 mb-stack-md">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-md text-label-md text-primary">Intelligence Meets Style</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg leading-tight text-on-surface">
+                Your Wardrobe,<br/>
+<span class="text-primary italic">Reimagined by AI</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                The luxury of a personal stylist, powered by artificial intelligence. Catalog your clothes, generate outfits, and perfect your look in seconds.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-stack-md pt-stack-lg">
+<button class="w-full sm:w-auto bg-primary text-on-primary px-10 py-5 rounded-full font-headline-md text-headline-md hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/20">
+                    Get Started Free
+                </button>
+<button class="w-full sm:w-auto glass-card text-on-surface px-10 py-5 rounded-full font-headline-md text-headline-md hover:bg-surface-container-high transition-all">
+                    Explore Looks
+                </button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+<span class="material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-stack-lg px-margin-mobile lg:px-margin-desktop bg-surface-container-lowest" id="how-it-works">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col items-center text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">Intelligent Features</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Curated tools designed to elevate your daily style choices through data and design.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Wardrobe Card -->
+<div class="group relative overflow-hidden rounded-xl glass-card p-8 border border-outline-variant/10 hover:border-outline/30 transition-all duration-500 flex flex-col h-[500px]">
+<div class="mb-stack-lg w-16 h-16 rounded-xl bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="checkroom">checkroom</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Digital Wardrobe</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-auto">Snap and organize. Our AI automatically removes backgrounds and tags your items by style, color, and fabric.</p>
+<div class="mt-stack-lg rounded-xl overflow-hidden h-48 border border-outline/10 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" data-alt="Organized wardrobe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWb1JGn2bO6ZCR-Woe0sW9W5eGIFD25k3o__XyzJRTjgONVFXCpaxspHh1tDMhyx9EfngesDMu3IE8igxwFytr2z1xkAwXEesSc0th-tGMWXs67ipOPbfkUmyTMXErplkfMpheX4UodJFx8iBFOqGk4kAa9EDlEF_BWe9r12oNWdleADo5hZM3fRhdrBhZpZqCkPJ8ChHUcldxu6jfSGloP322RN08b5ckGgxIlF73BrelHO8TDEH5jCzr-yTLq__HYXXLyrC_tou4"/>
+</div>
+</div>
+<!-- Generator Card -->
+<div class="group relative overflow-hidden rounded-xl glass-card p-8 border border-outline-variant/10 hover:border-outline/30 transition-all duration-500 flex flex-col h-[500px]">
+<div class="mb-stack-lg w-16 h-16 rounded-xl bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Outfit Generator</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-auto">Endless combinations. Let ClosetIQ mix your pieces into runway-ready outfits based on the weather and your calendar.</p>
+<div class="mt-stack-lg rounded-xl overflow-hidden h-48 border border-outline/10 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" data-alt="Styled outfit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAATFcsXkNvojJntMZxhknN-zvrSTLSlrU5HfKH7G56NAVRAf6bc_zW2u1ofzF7T3GdywmBF3K7QEWP-3KqsbiynFvX-OS-zp9sawOzxLwi3Eqd4FXmfEGAvuLoOsejxPtZyLmatYjXNfbcimVZW5rScb_cFTF6WIK1c2tcqPslYxZYpXHoBfXQHNgbb7BY4_-RXUAK1fgMoon9sDrIffEXqEUxf3WFOOSdHWMuZV85uHS-gW4fUZfJANL23kc4gicVgjiCUTffy3m5"/>
+</div>
+</div>
+<!-- Rate My Fit Card -->
+<div class="group relative overflow-hidden rounded-xl glass-card p-8 border border-outline-variant/10 hover:border-outline/30 transition-all duration-500 flex flex-col h-[500px]">
+<div class="mb-stack-lg w-16 h-16 rounded-xl bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="star">star</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Rate My Fit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-auto">Objective style feedback. Get a fashion-score and suggestions on how to improve your look with pieces you already own.</p>
+<div class="mt-stack-lg rounded-xl overflow-hidden h-48 border border-outline/10 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" data-alt="Mirror selfie" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhaJBlVDV8qv80dddMcxewG6imM9y9MDv9SfAOo1xca-_C8C1l5I5uHnBqyToXlAFttxfBchrWhRcl_Ymy-JaEBFPgjh0ah99-P6_oQadARBWkqiAr2-PV5kwneUmX1WukUOoskjO6QS7Ohn7-w6WDUpain5l24ZV5RaAQWCNPp-LTsPcIDGBImTVGBc_0ooryRJXPHc8zZuwxzTUFPj1nfD8auVH1CTWS2RswO2BiKthHjaxPywmlf3rhAscxD0VFqPTF_EIHFaY"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-32 px-margin-mobile lg:px-margin-desktop bg-background" id="pricing">
+<div class="max-w-4xl mx-auto">
+<div class="flex flex-col items-center text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Elevate Your Experience</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Simple, transparent pricing for your digital stylist.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Free Tier -->
+<div class="rounded-xl p-12 bg-surface-container border border-outline-variant/10 hover:border-outline/30 transition-all group">
+<div class="mb-8">
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Essential</span>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-display-lg text-headline-lg text-on-surface">$0</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Up to 50 items tracked</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Basic outfit suggestions</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Community access</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full border border-primary text-primary font-label-md text-label-md group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
+                        Get Started
+                    </button>
+</div>
+<!-- Premium Tier -->
+<div class="relative rounded-xl p-12 bg-primary text-on-primary shadow-2xl shadow-primary/20 overflow-hidden transform md:-translate-y-4">
+<div class="absolute top-0 right-0 p-8">
+<div class="bg-primary-fixed text-on-primary-fixed px-4 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-tighter">Most Loved</div>
+</div>
+<div class="mb-8">
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-primary-fixed/70">Premium</span>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-display-lg text-headline-lg text-on-primary">$12</span>
+<span class="font-body-md text-body-md text-on-primary-fixed/60">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary-fixed text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Unlimited items</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary-fixed text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">AI-Powered Trend Analysis</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary-fixed text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Personalized color theory</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary-fixed text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Exclusive Early Access</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full bg-on-primary text-primary font-label-md text-label-md hover:scale-105 active:scale-95 transition-all">
+                        Upgrade to Premium
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Aesthetic Masonry Feed -->
+<section class="py-24 px-margin-mobile lg:px-margin-desktop overflow-hidden bg-surface-container-lowest">
+<div class="columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
+<div class="break-inside-avoid group rounded-xl overflow-hidden relative">
+<img class="w-full group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="Street style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAraM-DZY_xDnc-QJ3ehPiooaHethAQX5P6DaRj-hXiFLx17GHLEKuIFW-yf5hMLL3DIOBMGBP9h8HpidbJG-QXvNN4nvkBafGTerqD2yGjQOfMDAgXCaWOJx5pp-RMBlIe_hYI6fRbmCNKiJVadO752z93uSPg_D9IfZ26Xs9od66m7jw464mw9Gd7bE6-Mb_hybFqVKgWkDTeWL2c7ttFoWxk4gSBTqIjJjFZxPawu2r_yBfWu8c1MCTb9TkW1K0gjiHovlQC88O6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<span class="text-on-background font-label-md text-label-md">#Minimalist</span>
+</div>
+</div>
+<div class="break-inside-avoid group rounded-xl overflow-hidden relative h-96 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="Jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwxK5-8dlKVz8VRAKB95u9Y1jDHDZLn_ghCDOpziChzwGsC0jVu_EEHgtirJJJlMPMYwlimG_4QJuk-spa15xt0mkTbNexmdmCm5tzq380shBIcR5g4rnXH2O20fsk5YS1gWy8fAjBlh5H--bwSPvXBLMtK90zdJMOl9ouH0tsv1ZY4J2HAmNSoq6FLFffpn2jO0EzZCbAsWeTJNz8MGyNWPMlNbiz44PN0r4I4rkbj67Ibl4D3mIhFKMTn06ORSLSRLFNCirma_t_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<span class="text-on-background font-label-md text-label-md">#Accessories</span>
+</div>
+</div>
+<div class="break-inside-avoid group rounded-xl overflow-hidden relative">
+<img class="w-full group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="Evening wear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7ikNRgjW4b3HazucUC-aq5v4vP6vHROftaZ4saoGxnQI4pV56gHDO4rSQiWqxlM1uKfqfOal41nqb2stNFPie2BSvsHMXG94lp0x62hc6FGDxR-b_EBmguzqhRNCWEN8Pvm9q8Td8xiYGCWZz7lqw-0xg7w4kNXTw-301XSmahAfFBM81qjyVdOcj0U2gxuuLmIRvcUxD4BwusAhqk8Jwjubotlm2sedCrtJYTkDDKGNq5ChBkK4LqKKKwFmTabS4-bRDguOi1f6W"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<span class="text-on-background font-label-md text-label-md">#Formal</span>
+</div>
+</div>
+<div class="break-inside-avoid group rounded-xl overflow-hidden relative">
+<img class="w-full group-hover:scale-110 transition-transform duration-700 opacity-90" data-alt="Menswear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Ck6KLj71IpE94JHgC4SCBnyDgkj6eqd02voyCY1tdfYRUTd4Mf9Xxb15hXvC4vQA6Z5cgZmRMDitjdT55AFA-Y2u2vKtI71QTa_wuDFdSP29Ctpfda6Obmb09W1OfVaX50lkwCmBJSkRnpZ3hDTZuuE3BdcnnJVoppW2Gh6aT80e5bLMhbc6vb7It9030twP1LsMgpaWrMwf7_s90gl0KTQdXIdVnhtK55nNyC4GRLHeUaJ1CzEcT4F15n52eO6k2jK3iPVQQpuQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<span class="text-on-background font-label-md text-label-md">#Contemporary</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] rounded-full z-50 bg-surface/70 backdrop-blur-2xl border border-outline/10 shadow-2xl flex justify-around items-center px-6 py-3">
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full w-12 h-12 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="checkroom">checkroom</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="py-16 px-margin-mobile lg:px-margin-desktop bg-surface-container border-t border-outline-variant/10">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start gap-stack-lg">
+<div class="space-y-4 max-w-xs">
+<span class="font-headline-lg text-headline-md tracking-tighter text-primary">ClosetIQ</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Defining the future of personal style through artificial intelligence and thoughtful design.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-stack-lg">
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Product</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Generator</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Wardrobe</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Pricing</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Support</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Settings</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Help Center</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Privacy</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Social</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-16 pt-8 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 ClosetIQ. All rights reserved.</span>
+<div class="flex items-center gap-4">
+<button class="bg-surface-container-high p-2 rounded-full hover:scale-110 transition-all">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="light_mode">light_mode</span>
+</button>
+</div>
+</div>
+</footer>
+<script>
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const floaters = document.querySelectorAll('.floating-card');
+        floaters.forEach((el, i) => {
+            const speed = 0.05 + (i * 0.02);
+            el.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+</body></html>

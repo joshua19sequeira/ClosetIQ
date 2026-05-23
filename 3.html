@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Explore Fashion | ClosetIQ</title>
+<!-- Font Loading -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#321300",
+                    "surface-variant": "#353534",
+                    "on-primary-fixed-variant": "#6f3810",
+                    "outline": "#a08d83",
+                    "on-primary": "#522300",
+                    "inverse-primary": "#8c4f25",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#5b2801",
+                    "primary-fixed": "#ffdbc8",
+                    "primary": "#ffb68b",
+                    "secondary-fixed-dim": "#dec1ac",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "primary-container": "#d98e5f",
+                    "on-background": "#e5e2e1",
+                    "surface-bright": "#393939",
+                    "surface-container-low": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "surface-container": "#201f1f",
+                    "surface-tint": "#ffb68b",
+                    "tertiary": "#c8c6c5",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-dim": "#131313",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary": "#313030",
+                    "secondary-container": "#574333",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#ccb09c",
+                    "surface-container-highest": "#353534",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "tertiary-container": "#a19f9f",
+                    "secondary": "#dec1ac",
+                    "on-surface-variant": "#d8c2b7",
+                    "primary-fixed-dim": "#ffb68b",
+                    "inverse-on-surface": "#313030",
+                    "on-secondary": "#3f2d1e",
+                    "on-secondary-fixed": "#28180b",
+                    "on-tertiary-container": "#373636",
+                    "secondary-fixed": "#fbddc7",
+                    "on-surface": "#e5e2e1",
+                    "background": "#131313",
+                    "outline-variant": "#53443b",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed": "#e5e2e1",
+                    "inverse-surface": "#e5e2e1",
+                    "surface": "#131313",
+                    "on-secondary-fixed-variant": "#574333"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "stack-lg": "48px",
+                    "stack-sm": "12px",
+                    "unit": "8px",
+                    "stack-md": "24px",
+                    "container-max": "1280px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "label-md": ["Manrope"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 24px;
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        @media (min-width: 1280px) {
+            .masonry-grid {
+                column-count: 4;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+        .glass-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .gradient-wash {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="fixed left-0 top-0 h-full w-64 z-40 bg-surface-container-lowest/60 backdrop-blur-2xl border-r border-outline-variant/10 hidden lg:flex flex-col p-6 gap-stack-lg shadow-xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">checkroom</span>
+</div>
+<div>
+<h1 class="font-headline-md text-primary leading-none">ClosetIQ</h1>
+<p class="text-[10px] font-label-md text-on-surface-variant uppercase tracking-widest">AI Stylist</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 hover:scale-[1.02] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="checkroom">checkroom</span>
+<span class="font-label-md text-label-md">Wardrobe</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 hover:scale-[1.02] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-md text-label-md">Generator</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container/20 text-primary rounded-xl px-4 py-3 hover:scale-[1.02] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Explore</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-2">
+<button class="bg-primary text-on-primary font-label-md text-label-md py-3 rounded-xl shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95 transition-all">
+                Premium Upgrade
+            </button>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-xl px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar (Mobile/Tablet) -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm flex lg:hidden justify-between items-center px-margin-mobile py-4">
+<h1 class="font-headline-md text-primary tracking-tighter">ClosetIQ</h1>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary" data-icon="favorite">favorite</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZW3jHWeGUIyx_IZRImDyf672CMumcCKy1FUkrfQGZJ40r245qI94o0_Oc7l_mByfDqUiJlCoSXsJ7xh8NcAEDzzxaEtdzfUYz7Lwa3QzJC03zU0Y7mbFfIQTLDISwIRqZtYCP0MUrXawHL9t32hcgFlRtBzQaR3YUSOq6NCsq7t76BBpXKLWVpAco-wMpIiANKvuy6Ol51mTyYWbC80OumNBvG37pHKIbEfhAoio5XFhc1EXzBoIiUszNZ2-jPugjrNiKsJe1eyoz"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 lg:pt-12 px-margin-mobile lg:px-margin-desktop min-h-screen pb-32">
+<!-- Search & Filter Header -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-headline-lg text-primary tracking-tight">Explore Fashion</h2>
+<p class="font-body-md text-on-surface-variant mt-2 max-w-md">Curated inspiration from the world's most innovative stylists and creators.</p>
+</div>
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-body-md" placeholder="Search aesthetics, trends..." type="text"/>
+</div>
+</div>
+<!-- Categories Chips -->
+<div class="flex gap-3 mt-8 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-lg shadow-primary/10 whitespace-nowrap">Trending</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant whitespace-nowrap transition-colors">Y2K</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant whitespace-nowrap transition-colors">Quiet Luxury</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant whitespace-nowrap transition-colors">Streetwear</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant whitespace-nowrap transition-colors">Korean Fashion</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant whitespace-nowrap transition-colors">Old Money</button>
+</div>
+</section>
+<div class="grid grid-cols-1 xl:grid-cols-[1fr_320px] gap-gutter">
+<!-- Infinite Scroll Masonry Grid -->
+<div class="masonry-grid">
+<!-- Card 1 -->
+<article class="masonry-item group relative overflow-hidden rounded-xl bg-surface-container shadow-sm border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1">
+<img alt="Fashion Outfit" class="w-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJLUfM2oQ6kYrDstmoaAn6Vrx-2vD6TCECcdk_sIMd32PErmNu8IOTRZFzVM6aZye4kHctsxdyx1T7AK9ff06L_wxcWfXjCeAyai_Zl4NJuXXhNi2nMhiwRaZLLV9dsVL47XYqo3byMVLAiZd8TFrU4g9To8Xukbl3JCgyNdSqYoTQo_0JETWHK5jq4qq6K9LYuU39O43itger4ta2UjD8nDCfOLh5qTPSzx6fK1B66kVvmAZKkOHo1qRpxbiEtAl_s7XN7F_QF13X"/>
+<div class="absolute inset-0 gradient-wash opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border border-white/20 overflow-hidden">
+<img alt="Creator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLlpryh3WM4SuuDhP8N1tt2is9siamUOssQ546wKOMwRPoQv76sorap2Cox5W6nOKoPuPQc4Lu_puCxQF4ZyEpjWM-VbIcU9QG0WnQInSKlZ0o80AZwLdBIZcx1Y81ZazkwNkBU3UluBS8qyX9ZySH12B1FnepEqTTtev2QPdLllKLqdEADV42gFxbvf_p8kgy3H6npLXTUbeOAWZMlO8WtbhIvl-GBPQuRXal-RNomIW-57twHIQNAZa1e4OgjtRJhjAPr7siUyPj"/>
+</div>
+<span class="text-white font-label-md text-label-sm">@sophia_style</span>
+</div>
+<button class="bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface">Effortless Neutrals</h3>
+<span class="text-on-surface-variant font-label-sm text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">favorite</span> 1.2k
+                            </span>
+</div>
+<button class="w-full py-2 bg-surface-container-highest text-primary font-label-md text-label-sm rounded-xl border border-outline-variant/20 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">bookmark</span> Save to Board
+                        </button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="masonry-item group relative overflow-hidden rounded-xl bg-surface-container shadow-sm border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1">
+<img alt="Streetwear Aesthetic" class="w-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqHXpnzMjHx_LM_XhzqVLIzhcZlpZ4cZX3Q7enjyNA1HYrihJmJAz2fXBL7E9jdDZbs4VjFe9OMMIhwtcnpvS6Xjvw3pepTnFp3vDKJfAWMRTIcRtsnmRhxbUkTRIRnNmIrTK7TXfP0A1XiTRphkAad8fYtebuvBh4pe4C3dq8Z0vJbV0lWXwSzXBBhQyMFkXvxQDlYVLxnExM33SOD9rNJUSpPabqBvfrglGhTUqqLmq5OvGCr6oKhT997VNQGzKJ5BqN35NV0XpO"/>
+<div class="absolute inset-0 gradient-wash opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border border-white/20 overflow-hidden">
+<img alt="Creator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa9az0cGFDNuFoCWAuaIasjCo6BVTfcF2XsRo956b3j7QvLUXzRfbN4KN0IQL0QG0STtBBjGbdRtXKxf8OXORRLyWLd8r07ia7uoNMQITuWiw4nE4KYYgemaO4_uuAaSEXOqKDIn-KCFPZnsSIH_gurmXb4gHhCIDf3tJWMxnl4zLYGD5KL4Qv0Ftz3BPeCaSLxYaXiJQYL0KnSwgiHeWR2h-TOT1Pw-ltHtUIKkbK9gR0Iy4miX0u4OH0yrwey0P1TtfSmvxpuAOh"/>
+</div>
+<span class="text-white font-label-md text-label-sm">@marcus_fits</span>
+</div>
+<button class="bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface">Neon City Nights</h3>
+<span class="text-on-surface-variant font-label-sm text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">favorite</span> 2.8k
+                            </span>
+</div>
+<button class="w-full py-2 bg-surface-container-highest text-primary font-label-md text-label-sm rounded-xl border border-outline-variant/20 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">bookmark</span> Save to Board
+                        </button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="masonry-item group relative overflow-hidden rounded-xl bg-surface-container shadow-sm border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1">
+<img alt="Korean Fashion" class="w-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkU9PD7DIrIotiMNp8JsrPAA6q6g2yT2jqiLLZubIfAideSeo813NSS0rY7b15JL2gUcfk318CJOI7pa9dJs7pdDFvg7i5Ig8_dnadfyC8INMpX3bKGM3Fy2jyRIqLxL4iTXgu0N2DFfu7v7tIpBNlRXBR7fN6ucoLcqWVfHUf4bQdQq0q1qezvY2-PXkKbaOgSgohY6jG2byYB6QAqM0DkWc94g0MLV_4uwp0Dm9u-_cyKijX-MU-0ulTwLPZ0EymInmI-d6Kfm4G"/>
+<div class="absolute inset-0 gradient-wash opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border border-white/20 overflow-hidden">
+<img alt="Creator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfXZCIh3ufrWgPWSUwu4Any7iCSQjlIJyUJ2BwxeEKIVBkcSLmBiC5BB0mVtydOjuFgr2CXgcTNxAliJzSL8mwCK6RDqQZmi4H2-SkwgE5ryvK5MdGzkTyQW70Ir8WLUc_er0mezj5vfu5EVrOsjhuWF4i0Rpa2NYJcywSIFvJDNnhP53D_syu3zNfyrrR0admicJjF2MdzlAdXExq4IOntD7yMgR9QFpqLt9fCOeg2kUQkdMxe2sj02_fSa76UVxLHS4eXON4TzQh"/>
+</div>
+<span class="text-white font-label-md text-label-sm">@hana_k_look</span>
+</div>
+<button class="bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface">Seoul Morning</h3>
+<span class="text-on-surface-variant font-label-sm text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">favorite</span> 940
+                            </span>
+</div>
+<button class="w-full py-2 bg-surface-container-highest text-primary font-label-md text-label-sm rounded-xl border border-outline-variant/20 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">bookmark</span> Save to Board
+                        </button>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="masonry-item group relative overflow-hidden rounded-xl bg-surface-container shadow-sm border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1">
+<img alt="Y2K Aesthetic" class="w-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmzbQ38AlyFQY2mYup7fZW7wt5CRCJFiVURTVkVa7bHp70YkqdRWyPZVv-LgjHQ82HpFxjjPqb39xs4m1n4c1fDokk3_ZfYiEt2jKNvOiWw3uzyS6GinHjZ4iaxGmUMvZV2bz7CSbvRbfyuEAjgYJMGPcFaA_VbZiBzz6T6uzGcBrcBlcJhApkxWF9Kae4Hsl5X90uqAd4NDsM5Yj8qP98_7ZpUo0oD1bzCy7dq2GOqVVBVBfHjqUrI3yHPBGv1VTWFyF7yMfKLOu1"/>
+<div class="absolute inset-0 gradient-wash opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border border-white/20 overflow-hidden">
+<img alt="Creator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6e4WgUGXVzynzO_yoB3zgf1aZAOvMyVQfFo4V4Yxd7RHjEbLhJw2iJaL3EHKqWMeCXKspYEDGMXMhFwzaEKa-Rq4Mdv5UNhzbz0TFSyc7oa3I01qcqcUwIe7CRSmWKJvDUsVih1oZEUAsFU_sw9oJvLUw78wi89CzR6uRZxkW0kJgLZemuVgO94RY5DoX97wBVv8SfGz_IeKJDmTU_fhKHFsszI2W_-Oo-QDIKu-IGF3EueAlqll_ERN5N63Xr16JfnLmqC6o_xdc"/>
+</div>
+<span class="text-white font-label-md text-label-sm">@retro_gen</span>
+</div>
+<button class="bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface">Digital Nostalgia</h3>
+<span class="text-on-surface-variant font-label-sm text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">favorite</span> 4.5k
+                            </span>
+</div>
+<button class="w-full py-2 bg-surface-container-highest text-primary font-label-md text-label-sm rounded-xl border border-outline-variant/20 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">bookmark</span> Save to Board
+                        </button>
+</div>
+</article>
+</div>
+<!-- Trending Creators Sidebar -->
+<aside class="hidden xl:flex flex-col gap-stack-lg">
+<div class="bg-surface-container-low/40 rounded-xl p-8 border border-outline-variant/10 shadow-sm glass-blur">
+<h3 class="font-headline-md text-primary mb-6">Trending Creators</h3>
+<div class="space-y-6">
+<!-- Creator 1 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded-full border-2 border-primary/20 p-0.5 group-hover:border-primary transition-colors">
+<img alt="Creator" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARbiEdJeT1VBR8I1yp8QhdSTklPCSePvy3BCpwbtDEq3g8cn4DoXs_SiFUE_TeVhNRJnY03zg1W6Mus3RIl3VOlGb8lfy4cKRGkpdnNrE7gpwuaGcsy3GsMsXxQyR-I2Q0cfDhGpDcWV5k0UXiasaW5YPtAfH8WXY2HRQVE8tcpBH1aCay9BZBi_bvJ86luZW4kGqifJpttM_esb9htxzav5wi7KT8crFa022FPqw4R7Vf-dy5XwUAnrPW54MyrHkwrwkW4CI5feCo"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Elena Voge</h4>
+<p class="text-on-surface-variant text-[12px]">Minimalist Expert</p>
+</div>
+</div>
+<button class="text-primary hover:bg-primary hover:text-on-primary p-2 rounded-full border border-primary/20 transition-all">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+</button>
+</div>
+<!-- Creator 2 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded-full border-2 border-primary/20 p-0.5 group-hover:border-primary transition-colors">
+<img alt="Creator" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNptHCgmjt1YYEZYNPIGGEWwzNyHrQ8bHbvzTbe-UG6R-uL7GyICGz650PHk6E3W5vPYougTgS2qFi6QvXmlAT9PaJxUFUCwnyuWoXqwO3hSpiGMn3hgMLW_ToA_j-5V4mBuSl3WiJUNq33G8BIqmz1asdfPvJ2vIBj4ipBvoU34hwBmz5ZLpLNQ824rt3GshGbzcfDuTjotNNrvADmEGoYxQFvEHgHK7MQSQAdHOtDY_ur0cYLLkfIKsBftMbKwpqoB4artrMbqWo"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Julian Thorne</h4>
+<p class="text-on-surface-variant text-[12px]">Tailoring &amp; Coats</p>
+</div>
+</div>
+<button class="text-primary hover:bg-primary hover:text-on-primary p-2 rounded-full border border-primary/20 transition-all">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+</button>
+</div>
+<!-- Creator 3 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded-full border-2 border-primary/20 p-0.5 group-hover:border-primary transition-colors">
+<img alt="Creator" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbHSdihqLXK33rEqBeY8OrxoreATA-Tza4HF4jP6V8_JaD0DMmKaHuwlzWwQshizXNClDniIIvsppDaMvHkd9v7GjiVXJ0KokUuGqwXC0z2H_c_Q46go4xkaKIGWVczhiAyvPrC2GOw9ML0GIqGEVJWKQF5ZEcXBOPzRnt2y-FAWl1Pa157JgvrgSktlTJzSWhmLSmVM_zCPMniGOwjkpFyi_YXGGaCPY0hAyz1ckgxBxv8N9q7UhTdeVd8B7YIanNTpiSdOTjpcso"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Amara Lee</h4>
+<p class="text-on-surface-variant text-[12px]">Street-Glam</p>
+</div>
+</div>
+<button class="text-primary hover:bg-primary hover:text-on-primary p-2 rounded-full border border-primary/20 transition-all">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+</button>
+</div>
+</div>
+<button class="w-full mt-8 py-3 border border-outline-variant/30 text-on-surface-variant font-label-md text-label-sm rounded-xl hover:bg-surface-container-high transition-colors">
+                        View All Stylists
+                    </button>
+</div>
+<!-- Promo Card -->
+<div class="relative overflow-hidden rounded-xl p-8 bg-secondary-container text-on-secondary-container shadow-xl shadow-black/20 group border border-outline-variant/10">
+<div class="relative z-10">
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter mb-4 inline-block">Pro Feature</span>
+<h4 class="font-headline-md text-on-surface mb-2 leading-tight">Identify Any Outfit with AI</h4>
+<p class="text-on-surface-variant text-label-sm mb-6">Upload a screenshot and let ClosetIQ find every piece for you instantly.</p>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md shadow-lg shadow-black/10 group-hover:scale-105 transition-transform">
+                            Try Lens AI
+                        </button>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] rounded-full z-50 bg-surface-container-low/70 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/40 lg:hidden flex justify-around items-center px-6 py-3">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="checkroom">checkroom</span>
+<span class="font-label-sm text-[10px]">Wardrobe</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-[10px]">Generator</span>
+</a>
+<div class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full w-12 h-12 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+</div>
+</nav>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Simple Infinite Scroll Simulation
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+                // In a real app, this would fetch more cards
+            }
+        });
+
+        // Add subtle parallax to images on scroll
+        const cards = document.querySelectorAll('.masonry-item img');
+        window.addEventListener('scroll', () => {
+            cards.forEach(img => {
+                const speed = 0.05;
+                const rect = img.getBoundingClientRect();
+                const visible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (visible) {
+                    const shift = (window.innerHeight / 2 - rect.top) * speed;
+                    img.style.transform = `scale(1.1) translateY(${shift}px)`;
+                }
+            });
+        });
+    </script>
+</body></html>
